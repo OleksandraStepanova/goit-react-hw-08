@@ -1,17 +1,20 @@
 import { AppBar, Box, Toolbar } from "@mui/material";
 import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
-import UserMenu from "../UserMenu/Usermenu";
+import UserMenu from "../UserMenu/UserMenu";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selector";
 
 
 export default function Appbar() {
+    const isLoginIn = useSelector(selectIsLoggedIn);
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar sx={{justifyContent:'space-between'}}>
                     <Navigation />
-                    <UserMenu />
-                    <AuthNav/>
+                    {isLoginIn?<UserMenu />:<AuthNav/>}                    
                 </Toolbar>
             </AppBar>
         </Box>

@@ -3,7 +3,8 @@ import * as Yup from "yup";
 import { useId } from "react";
 import css from './ContactForm.module.css';
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
+import { Box, Button, Input, InputLabel, Paper} from "@mui/material";
 
 
 export default function ContactForm() {
@@ -27,17 +28,23 @@ export default function ContactForm() {
   
     return (
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactSchema}>
-            <Form  className={css.form}>
-                <label htmlFor={`${id}+name`}>Name</label>
-                <Field className={css.input} type="text" name="name" id={`${id}+name`} />
-                <ErrorMessage name="name" component="span" className={css.message}/>
-
-                <label htmlFor={`${id}+number`}>Number</label>
-                <Field className={css.input} type="text" name="number" id={`${id}+number`} />
-                <ErrorMessage name="number" component="span" className={css.message}/>
-                
-                <button className={css.button} type="submit">Add contact</button>
-            </Form>
+            <Paper elevation={3} sx={{width:'700px'}}>
+                <Box component={Form} sx={{display: 'flex', justifyContent:'space-between',alignItems:'center', padding:'16px 32px',flexWrap:'wrap'}}>
+                    <InputLabel htmlFor={`${id}+name`}>Name</InputLabel>
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <ErrorMessage name="name" component="span" className={css.message}/>
+                        <Field as={Input} type="text" name="name" id={`${id}+name`}/>                        
+                   </Box>
+    
+                    <InputLabel htmlFor={`${id}+number`}>Number</InputLabel>
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <ErrorMessage name="number" component="span" className={css.message} />
+                        <Field as={Input} type="text" name="number" id={`${id}+number`} />                    
+                    </Box>
+                    
+                    <Button className={css.button} type="submit">Add contact</Button>
+                </Box>
+            </Paper>
         </Formik>
     )
 }
