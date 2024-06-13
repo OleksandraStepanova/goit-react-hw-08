@@ -4,7 +4,8 @@ import { useId } from "react";
 import css from './ContactForm.module.css';
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-import { Box, Button, Input, InputLabel, Paper} from "@mui/material";
+import { Box, Button, Input, InputLabel, Paper } from "@mui/material";
+import toast,{ Toaster } from 'react-hot-toast';
 
 
 export default function ContactForm() {
@@ -22,29 +23,32 @@ export default function ContactForm() {
             number: ""
     }
     function handleSubmit(values, actions) {
-        dispatch(addContact(values));
+        dispatch(addContact(values)).unwrap().then(()=>toast('The contact has been added successefully'));
         actions.resetForm();
     }
   
     return (
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactSchema}>
-            <Paper elevation={3} sx={{width:'700px'}}>
-                <Box component={Form} sx={{display: 'flex', justifyContent:'space-between',alignItems:'center', padding:'16px 32px',flexWrap:'wrap'}}>
-                    <InputLabel htmlFor={`${id}+name`}>Name</InputLabel>
-                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <ErrorMessage name="name" component="span" className={css.message}/>
-                        <Field as={Input} type="text" name="name" id={`${id}+name`}/>                        
-                   </Box>
-    
-                    <InputLabel htmlFor={`${id}+number`}>Number</InputLabel>
-                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <ErrorMessage name="number" component="span" className={css.message} />
-                        <Field as={Input} type="text" name="number" id={`${id}+number`} />                    
+        <>
+            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactSchema}>
+                <Paper elevation={3} sx={{width:'700px'}}>
+                    <Box component={Form} sx={{display: 'flex', justifyContent:'space-between',alignItems:'center', padding:'16px 32px',flexWrap:'wrap'}}>
+                        <InputLabel htmlFor={`${id}+name`}>Name</InputLabel>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <ErrorMessage name="name" component="span" className={css.message}/>
+                            <Field as={Input} type="text" name="name" id={`${id}+name`}/>                        
+                       </Box>
+        
+                        <InputLabel htmlFor={`${id}+number`}>Number</InputLabel>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <ErrorMessage name="number" component="span" className={css.message} />
+                            <Field as={Input} type="text" name="number" id={`${id}+number`} />                    
+                        </Box>
+                        
+                        <Button className={css.button} type="submit">Add contact</Button>
                     </Box>
-                    
-                    <Button className={css.button} type="submit">Add contact</Button>
-                </Box>
-            </Paper>
-        </Formik>
+                </Paper>
+            </Formik>
+            <Toaster/>
+        </>
     )
 }

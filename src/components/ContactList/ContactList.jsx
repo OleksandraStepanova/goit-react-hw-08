@@ -9,7 +9,7 @@ export default function ContactList() {
     return (
         <List sx={{display:'flex',flexWrap:'wrap'}}>
             {contacts.map((contactItem) => (
-                <ListItem sx={{width:0.25}} key={contactItem.id}>
+                <ListItem sx={{width:'400px'}} key={contactItem.id}>
                     <Contact contact={contactItem}/>
                 </ListItem>
             ))}
