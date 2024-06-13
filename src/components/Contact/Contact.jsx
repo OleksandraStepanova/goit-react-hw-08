@@ -12,9 +12,7 @@ export default function Contact({ contact: {id, name, number } }) {
         dispatch(deleteContact(id)).unwrap().then(()=>toast('The contact has been deleted'));
     }
 
-    const handlePatch = () => {
-        console.log(id);
-    }
+  
 
     return (
         <>
