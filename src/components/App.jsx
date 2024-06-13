@@ -1,31 +1,29 @@
-import ContactList from "./ContactList/ContactList"
-import SearchBox from "./SearchBox/SearchBox"
-import ContactForm from "./ContactForm/ContactForm"
-import { useDispatch, useSelector } from "react-redux"
-import { selectError, selectLoading } from "../redux/contactsSlice"
-import { useEffect } from "react"
-import { fetchContacts } from "../redux/contactsOps"
-import Loader from "./Loader/Loader"
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout/Layaut";
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
 
-function App() {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 
-  useEffect(() => {
-    dispatch(fetchContacts())
-  },
-    [dispatch]
-  )
-
-  return (<div>
-    <h1>Phonebook</h1>
-    <ContactForm/>
-    <SearchBox />
-    {isLoading && <Loader />}
-    {isError && <p>Error</p>}
-    <ContactList/>
-</div>) 
+export default function App() {
+  return (
+    <React.Fragment>
+      <CssBaseline/>
+      <Layout>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/register" element={<RegisterPage/>} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/contacts" element={<ContactsPage/>} />
+          </Routes>
+        </Suspense>
+      </Layout>
+</React.Fragment>
+  );
 }
 
-export default App
