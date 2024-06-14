@@ -6,7 +6,7 @@ export default function HomePage() {
         <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', padding:'100px 0', textAlign:'center'}}>
             <Typography variant="h1" >Phone Book</Typography>
             <Typography variant="h4">Secure storage of your contacts</Typography>
-            <PhonelinkLockOutlined sx={{fontSize:'48px', marginTop:'20px'}}/>
+            <PhonelinkLockOutlined color="primary" sx={{fontSize:'48px', marginTop:'20px'}}/>
         </Box>
     )
 }
