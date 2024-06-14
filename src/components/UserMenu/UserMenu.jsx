@@ -2,7 +2,6 @@ import { Box, Button, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selector";
 import { logout } from "../../redux/auth/operations";
-import { yellow } from "@mui/material/colors";
 
 export default function UserMenu() {
     const dispatch = useDispatch();
