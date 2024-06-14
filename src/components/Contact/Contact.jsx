@@ -1,18 +1,10 @@
 import { HiPhone } from "react-icons/hi";
 import { IoPerson } from "react-icons/io5";
-import { useDispatch } from "react-redux";
-import { deleteContact } from '../../redux/contacts/operations';
-import { Box, Button, Card, CardContent, List, ListItem, Typography } from "@mui/material";
-import toast,{ Toaster } from 'react-hot-toast';
+import { Box, Card, CardContent, IconButton, List, ListItem, Typography } from "@mui/material";
+import { DeleteSweepOutlined, EditNoteOutlined } from "@mui/icons-material";
 
-export default function Contact({ contact: {id, name, number } }) {
-    const dispatch = useDispatch();
 
-    const handleDelete = () => {
-        dispatch(deleteContact(id)).unwrap().then(()=>toast('The contact has been deleted'));
-    }
-
-  
+export default function Contact({ contact: {id, name, number }, modalOpen }) { 
 
     return (
         <>
@@ -28,13 +20,12 @@ export default function Contact({ contact: {id, name, number } }) {
                             <Typography variant="p">{number}</Typography>  
                         </ListItem>
                     </List>       
-                    <Box sx={{display:'flex', flexDirection:'column', gap:2}}>                        
-                        {/* <Button variant="outlined" sx={{ height: 1 }} type="button" onClick={handlePatch}>Edit</Button> */}
-                        <Button variant="outlined" sx={{ height: 1 }} type="button" onClick={handleDelete}>Delete</Button>
+                    <Box sx={{display:'flex', flexDirection:'column', gap:1}}>                        
+                        <IconButton variant="outlined" type="button" ><EditNoteOutlined/></IconButton>
+                        <IconButton variant="outlined" type="button" onClick={()=>{modalOpen(id)}}><DeleteSweepOutlined/></IconButton>
                     </Box>
                 </CardContent>                     
             </Card>
-            <Toaster/>
         </>
     )
 }

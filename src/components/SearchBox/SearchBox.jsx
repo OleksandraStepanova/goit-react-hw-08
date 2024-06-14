@@ -12,7 +12,7 @@ export default function SearchBox() {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width:'356px'}}>
             <Typography variant='h6' >Find contact</Typography>
-            <TextField variant='outlined' type="text" onChange ={handleFilter} value={filter} />
+            <TextField variant='standard' type="text" onChange ={handleFilter} value={filter} />
         </Box>
     )
 }
