@@ -31,7 +31,7 @@ export default function ContactForm() {
         <>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactSchema}>
                 <Paper elevation={3} sx={{width:'700px'}}>
-                    <Box component={Form} sx={{display: 'flex', justifyContent:'space-between', gap:1,alignItems:'center', padding:'16px 32px',flexWrap:'wrap'}}>
+                    <Box component={Form} sx={{display: 'flex', justifyContent:'space-between', gap:1,alignItems:'center', padding:'8px 32px',flexWrap:'wrap'}}>
                         <InputLabel htmlFor={`${id}+name`}>Name</InputLabel>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <ErrorMessage name="name" component="span" className={css.message}/>
