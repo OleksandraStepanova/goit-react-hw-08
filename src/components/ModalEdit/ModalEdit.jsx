@@ -40,9 +40,9 @@ export default function ModalEdit({ open, close, id }) {
             <DialogContent><DialogContentText>Edit contact!</DialogContentText></DialogContent>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactSchema}>
                 <Box component={Form} sx={{ display: 'flex', gap: 2, padding: '32px 16px', flexDirection: 'column', width: '320px' }}>
-                    <ErrorMessage name="email" />
+                    <ErrorMessage name="name" />
                     <Field as={TextField} name='name' lable='name' type='name' helperText='Name' id={`${idForm}+name`}/>
-                    <ErrorMessage name="password" />
+                    <ErrorMessage name="number" />
                     <Field as={TextField} name='number' lable='number' type='text' helperText='Number' id={`${idForm}+number`}/>
                     <DialogActions>
                         <Button onClick={close} color="primary">Cancel</Button>
