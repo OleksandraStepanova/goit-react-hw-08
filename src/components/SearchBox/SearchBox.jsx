@@ -10,8 +10,8 @@ export default function SearchBox() {
     const handleFilter = e => dispatch(changeFilter(e.target.value.trim()))        
     
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width:'460px'}}>
-            <Typography variant='h5' >Find contact by name</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width:'356px'}}>
+            <Typography variant='h6' >Find contact</Typography>
             <TextField variant='outlined' type="text" onChange ={handleFilter} value={filter} />
         </Box>
     )

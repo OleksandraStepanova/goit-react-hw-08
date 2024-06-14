@@ -16,7 +16,7 @@ export default function Contact({ contact: {id, name, number } }) {
 
     return (
         <>
-            <Card sx={{width:'400px', height:'160px'}}>
+            <Card sx={{width:'356px', height:'160px'}}>
                 <CardContent sx={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
                     <List>
                         <ListItem sx={{display:'flex', gap:2}}>

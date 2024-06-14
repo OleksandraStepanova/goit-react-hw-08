@@ -22,7 +22,8 @@ export default function App() {
   useEffect(() => {
     dispatch(refreshUser())
   },[dispatch])
-  return isRefreshingUser?(<div>REFRESHING USER...</div>):(
+  return isRefreshingUser ?
+    (<div>REFRESHING USER...</div>) : (
     <React.Fragment>
       <CssBaseline/>
       <Layout>

@@ -28,7 +28,7 @@ export default function RegistrationForm() {
        <>
             <Formik initialValues={initialValues} validationSchema={ContactSchema} onSubmit={handleSubmid}>
                 <Paper elevation={3} sx={{marginTop:2}}>
-                    <Box component={Form} sx={{ display: 'flex', gap:2, padding:'32px 16px', flexDirection: 'column', width:400}}>
+                    <Box component={Form} sx={{ display: 'flex', gap:2, padding:'32px 16px', flexDirection: 'column', width:'356px'}}>
                         <Field as={TextField} name='name' lable='name' helperText='Username' />
                         <Field as={TextField} name='email' lable='Email' type='email' helperText='Email' />
                         <Field as={TextField} name='password' lable='Password' type='password' helperText='Password' />

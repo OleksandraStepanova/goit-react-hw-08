@@ -7,9 +7,9 @@ export default function ContactList() {
     const contacts = useSelector(selectFilteredContacts);
   
     return (
-        <List sx={{display:'flex',flexWrap:'wrap'}}>
+        <List sx={{display:'flex',flexWrap:'wrap', justifyContent:'center'}}>
             {contacts.map((contactItem) => (
-                <ListItem sx={{width:'400px'}} key={contactItem.id}>
+                <ListItem sx={{width:'356px'}} key={contactItem.id}>
                     <Contact contact={contactItem}/>
                 </ListItem>
             ))}
