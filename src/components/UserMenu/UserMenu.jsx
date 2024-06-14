@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selector";
 import { logout } from "../../redux/auth/operations";
+import { yellow } from "@mui/material/colors";
 
 export default function UserMenu() {
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export default function UserMenu() {
 
     return (
         <Box sx={{ display: 'flex', gap:2}}>
-            <Typography variant="h6">Welcome, {user.name}!</Typography>
+            <Typography variant="h6" sx={{color:'yellow'}}>Welcome, {user.name}!</Typography>
             <Button variant="text" sx={{color:'#fff'}} onClick={()=>{dispatch(logout())}}>Logout</Button>
         </Box>
     )
