@@ -4,7 +4,7 @@ import { Box, Card, CardContent, IconButton, List, ListItem, Typography } from "
 import { DeleteSweepOutlined, EditNoteOutlined } from "@mui/icons-material";
 
 
-export default function Contact({ contact: {id, name, number }, modalOpen }) { 
+export default function Contact({ contact: {id, name, number }, modalOpenDelete, modalOpenEdit }) { 
 
     return (
         <>
@@ -21,8 +21,8 @@ export default function Contact({ contact: {id, name, number }, modalOpen }) {
                         </ListItem>
                     </List>       
                     <Box sx={{display:'flex', flexDirection:'column', gap:1}}>                        
-                        <IconButton variant="outlined" type="button" ><EditNoteOutlined/></IconButton>
-                        <IconButton variant="outlined" type="button" onClick={()=>{modalOpen(id)}}><DeleteSweepOutlined/></IconButton>
+                        <IconButton variant="outlined" type="button" onClick={()=>{modalOpenEdit(id)}} ><EditNoteOutlined/></IconButton>
+                        <IconButton variant="outlined" type="button" onClick={()=>{modalOpenDelete(id)}}><DeleteSweepOutlined/></IconButton>
                     </Box>
                 </CardContent>                     
             </Card>

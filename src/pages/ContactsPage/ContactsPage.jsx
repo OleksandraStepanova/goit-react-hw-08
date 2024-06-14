@@ -7,20 +7,32 @@ import { selectLoading } from "../../redux/contacts/selector";
 import { useEffect, useState } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import ModalDelete from "../../components/ModalDelete/ModalDelete";
+import ModalEdit from "../../components/ModalEdit/ModalEdit";
 
 export default function ContactsPage() {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectLoading);
-    const [open, setOpen] = useState(false);
-    const [currentContact, setCurrentContact] = useState();
+    const [openDelete, setOpenDelete] = useState(false);
+    const [openEdit, setOpenEdit] = useState(false);
+    const [currentContactDelete, setCurrentContactDelete] = useState();
+    const [currentContactEdit, setCurrentContactEdit] = useState();
 
-    const handleOpen = (contact) => {
-        setOpen(true);
-        setCurrentContact(contact);
+    const handleOpenDelete = (contact) => {
+        setOpenDelete(true);
+        setCurrentContactDelete(contact);
     }
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleCloseDelete = () => {
+        setOpenDelete(false);
+
+    } 
+       const handleOpenEdit = (contact) => {
+        setOpenEdit(true);
+        setCurrentContactEdit(contact);
+    }
+
+    const handleCloseEdit = () => {
+        setOpenEdit(false);
 
     } 
 
@@ -36,8 +48,9 @@ export default function ContactsPage() {
                 <SearchBox />
            </Box>
             {isLoading&&<LinearProgress/>}
-            <ContactList modalOpen={handleOpen} />
-            <ModalDelete open={open} close={handleClose} id={currentContact} />
+            <ContactList modalOpenDelete={handleOpenDelete} modalOpenEdit={handleOpenEdit} />
+            <ModalDelete open={openDelete} close={handleCloseDelete} id={currentContactDelete} />
+            {currentContactEdit&&<ModalEdit open={openEdit} close={handleCloseEdit} id={currentContactEdit}/>}
         </Box>
     )
 }
